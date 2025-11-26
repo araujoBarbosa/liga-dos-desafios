@@ -1,37 +1,9 @@
-// ====== IMPORTES DO FIREBASE (SDK MODERNO) ======
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import {
-  getDatabase,
-  ref,
-  set,
-  push,
-  onValue,
-  onChildAdded,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+// ====== IMPORTES DO FIREBASE (via index.html) ======
+import { db, storage } from "./index.html";
+import { ref, set, push, onValue, onChildAdded, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+import { ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-storage.js";
 
-import {
-  getStorage,
-  ref as storageRef,
-  uploadBytes,
-  getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
-
-// ====== CONFIGURAÇÃO REAL DO MEU FIREBASE ======
-const firebaseConfig = {
-  apiKey: "AIzaSyBgjvQiI9fTVqR8rflZJod9ZYa_7snlyMw",
-  authDomain: "liga-dos-desafios.firebaseapp.com",
-  databaseURL: "https://liga-dos-desafios-default-rtdb.firebaseio.com",
-  projectId: "liga-dos-desafios",
-  storageBucket: "liga-dos-desafios.firebasestorage.app",
-  messagingSenderId: "656853224486",
-  appId: "1:656853224486:web:15019345b8649b838daae7"
-};
-
-// ====== INICIALIZAÇÃO ======
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const storage = getStorage(app);
+// Inicialização removida; db e storage vêm do index.html
 
 // ====== VARIÁVEIS GERAIS ======
 let apelido = "";
@@ -377,3 +349,4 @@ document.getElementById("btnEntrarLogin")?.addEventListener("click", () => {
 // ====== START ======
 configurarChatFirebase();
 if (timeCodigo) monitorarTime(timeCodigo);
+
