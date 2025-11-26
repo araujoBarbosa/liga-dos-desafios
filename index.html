@@ -6,8 +6,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Liga dos Desafios</title>
 
+  <!-- Firebase inline module antes do script principal -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import {
+      getDatabase, ref, set, onValue, push, onChildAdded
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+    import {
+      getStorage, ref as sRef, uploadBytes, getDownloadURL
+    } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBgjvQiI9fTVqR8rflZJod9ZYa_7snlyMw",
+      authDomain: "liga-dos-desafios.firebaseapp.com",
+      databaseURL: "https://liga-dos-desafios-default-rtdb.firebaseio.com",
+      projectId: "liga-dos-desafios",
+      storageBucket: "liga-dos-desafios.firebasestorage.app",
+      messagingSenderId: "656853224486",
+      appId: "1:656853224486:web:15019345b8649b838daae7"
+    };
+
+    // Inicializa Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const storage = getStorage(app);
+
+    // Torna global para o script.js acessar
+    window.db = db;
+    window.storage = storage;
+  </script>
   <!-- script.js como módulo (carregado corretamente) -->
   <script type="module" src="script.js"></script>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="img/icon-192.png">
+  <meta name="theme-color" content="#7c3aed">
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
 </head>
 
 <body>
