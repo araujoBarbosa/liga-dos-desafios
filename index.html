@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liga dos Desafios</title>
+
+  <!-- script.js como módulo (carregado corretamente) -->
+  <script type="module" src="script.js"></script>
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- CABEÇALHO -->
+    <header class="app-header">
+      <div class="app-header-main">
+        <div class="logo-badge">🏆</div>
+        <div class="titulo-app">
+          <h1>Liga dos Desafios</h1>
+          <span>Temporada 1 • Famílias & Times</span>
+        </div>
+      </div>
+
+      <div class="app-header-right">
+        <div class="pill-temporada">
+          <span>Progresso</span> • <strong id="headerProgresso">0%</strong>
+        </div>
+        <div class="avatar-mini" id="avatarTopo">👨‍👩‍👧</div>
+      </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- TELA DE LOGIN -->
+    <section id="screen-login" class="screen active tela-login">
+      <div class="background-particles">
+        <div class="particle" style="top:20%; left:10%; animation-delay:0s;"></div>
+        <div class="particle" style="top:60%; left:80%; animation-delay:2s;"></div>
+        <div class="particle particle-orange" style="top:75%; left:30%; animation-delay:1s;"></div>
+        <div class="particle" style="top:40%; left:60%; animation-delay:3s;"></div>
+        <div class="particle particle-orange" style="top:15%; left:75%; animation-delay:0.5s;"></div>
+      </div>
+
+      <div class="login-container">
+
+        <div class="login-logo">
+          🏆
+        </div>
+
+        <h1 class="login-titulo">Entre para a Liga</h1>
+        <p class="login-sub">Prepare-se para a temporada mais épica.</p>
+
+        <!-- Avatar Selection -->
+        <div class="avatar-scroll">
+          <div class="avatar-item">👨‍💼</div>
+          <div class="avatar-item">👩‍🦰</div>
+          <div class="avatar-item">👨‍👩‍👧</div>
+          <div class="avatar-item">🐾</div>
+          <div class="avatar-item">🎮</div>
+          <div class="avatar-item">🔥</div>
+        </div>
+
+        <input id="inputNome" type="text" placeholder="Digite seu nome..." />
+        <input id="inputSenha" type="password" placeholder="Digite a senha do acesso..." />
+
+        <button id="btnEntrarLogin" class="btn-login">
+          Entrar na Liga ⚡
+        </button>
+
+      </div>
+    </section>
+
+    <main class="app-main">
+
+
+      <!-- TELA TIME -->
+      <section id="screen-time" class="screen">
+        <div class="titulo-section">
+          <span>Entrar ou criar um time</span>
+          <small>Passo 1 de 2</small>
+        </div>
+
+        <p class="texto-suave">
+          Este é um protótipo visual com campos simulados. No app real, estes dados seriam salvos no servidor.
+        </p>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title-row">
+              <span>👥</span>
+              <div>
+                <div class="card-title">Entrar em um time existente</div>
+                <div class="card-subtitle">Use o código enviado por alguém.</div>
+              </div>
+            </div>
+          </div>
+          <div class="campo">
+            <label for="codigoTime">Código do time</label>
+            <input id="codigoTime" type="text" placeholder="Ex: X7F9K2" />
+          </div>
+          <button class="btn btn-secundario btn-block">
+            Entrar no time (visual)
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title-row">
+              <span>⭐</span>
+              <div>
+                <div class="card-title">Criar um novo time</div>
+                <div class="card-subtitle">Ideal para sua família ou grupo de amigos.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="nomeTime">Nome do time</label>
+            <input id="nomeTime" type="text" value="Família Barbosa" />
+          </div>
+
+          <button class="btn btn-principal btn-block" id="btnContinuarDashboard">
+            Ir para o painel do time
+          </button>
+        </div>
+      </section>
+
+      <!-- TELA DASHBOARD -->
+      <section id="screen-dashboard" class="screen">
+        <div class="titulo-section">
+          <span id="tituloTimePainel">Time: Família Barbosa</span>
+          <small>Visão geral</small>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title-row">
+              <span>📊</span>
+              <div>
+                <div class="card-title">Progresso na temporada</div>
+                <div class="card-subtitle">
+                  Acompanhe desafios concluídos e pontos acumulados.
+                </div>
+              </div>
+            </div>
+            <span class="pill pontos" id="pillPontosTotais">0 pts</span>
+          </div>
+
+          <div class="progresso-wrapper">
+            <div class="progresso-barra">
+              <div class="progresso-preenchido" id="barraProgresso"></div>
+            </div>
+            <div class="progresso-texto">
+              <span id="textoDesafiosConcluidos">0 / 20 desafios</span>
+              <span id="textoPercentualProgresso">0%</span>
+            </div>
+          </div>
+
+          <div class="grid-mini-cards">
+            <div class="mini-card">
+              <span class="icone">🏆</span>
+              <strong>Posição no ranking</strong>
+              <small>2º lugar (exemplo visual)</small>
+            </div>
+            <div class="mini-card">
+              <span class="icone">🎯</span>
+              <strong>Desafio atual</strong>
+              <small id="miniDesafioAtual">#1 Foto engraçada com o pet</small>
+            </div>
+            <div class="mini-card">
+              <span class="icone">👨‍👩‍👧‍👦</span>
+              <strong>Membros</strong>
+              <small>4 pessoas no time (visual)</small>
+            </div>
+          </div>
+
+
+        </div>
+
+        <!-- CHAT GLOBAL -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title-row">
+              <span>💬</span>
+              <div>
+                <div class="card-title">Chat global da Liga</div>
+                <div class="card-subtitle">
+                  Todos os times podem conversar aqui em tempo real.
+                </div>
+              </div>
+            </div>
+            <span class="badge-status" id="badgeStatusChat">Modo local</span>
+          </div>
+
+          <div class="chat-container">
+            <div class="chat-mensagens" id="chatMensagens"></div>
+
+            <div class="chat-input-area">
+              <input id="chatInput" type="text" placeholder="Digite uma mensagem para todos..." autocomplete="off" />
+              <button id="btnAudio" class="btn-audio">🎤</button>
+              <button id="chatEnviar">➤</button>
+            </div>
+
+            <div class="chat-info-usuario">
+              <span id="chatUsuarioInfo"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TELA DESAFIOS (Desafio Atual) -->
+      <section id="screen-desafios" class="screen">
+
+        <div class="titulo-section">
+          <span>Desafio Atual</span>
+          <small id="contadorDesafios">1 / 20</small>
+        </div>
+
+        <div class="card" id="cardDesafioAtual">
+
+          <div class="card-header">
+            <div class="card-title-row">
+              <span id="emojiAtual">🎯</span>
+              <div>
+                <div class="card-title" id="tituloDesafioAtual">Carregando...</div>
+                <div class="card-subtitle" id="nivelDesafioAtual"></div>
+              </div>
+            </div>
+            <span class="pill pontos" id="pontosDesafioAtual">0 pts</span>
+          </div>
+
+          <p class="texto-suave" id="descricaoDesafioAtual"></p>
+
+          <div class="chips-linha" id="chipsDesafioAtual"></div>
+
+          <div class="area-envio">
+            <strong>Envio da prova</strong>
+            <p>Envie uma foto ou vídeo para concluir este desafio.</p>
+            <div class="area-envio-botoes">
+              <button class="btn btn-secundario" id="btnEnviarFoto">📸 Foto</button>
+              <button class="btn btn-secundario" id="btnEnviarVideo">🎥 Vídeo</button>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <strong>Status do time:</strong>
+            <ul id="statusMembros" class="texto-suave"></ul>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- TELA DETALHE -->
+      <section id="screen-detalhe-desafio" class="screen">
+        <div class="titulo-section">
+          <span id="detalheTituloCurto">Desafio</span>
+          <small id="detalheNumero">#?</small>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title-row">
+              <span id="detalheEmoji">🎯</span>
+              <div>
+                <div class="card-title" id="detalheTitulo"></div>
+                <div class="card-subtitle" id="detalheNivel"></div>
+              </div>
+            </div>
+            <div class="detalhe-lado-direito">
+              <span class="pill pontos" id="detalhePontos"></span>
+              <span class="badge-status aberto">Aberto (visual)</span>
+            </div>
+          </div>
+
+          <p class="texto-suave" id="detalheDescricao"></p>
+
+          <div class="chips-linha" id="detalheChips"></div>
+
+          <div class="area-envio">
+            <strong>Envio da prova (visual)</strong>
+            <p>No app real, fotos e vídeos seriam enviados aqui.</p>
+            <div class="area-envio-botoes">
+              <button class="btn btn-secundario">📸 Tirar foto</button>
+              <button class="btn btn-secundario">🎥 Gravar vídeo</button>
+            </div>
+          </div>
+
+          <button class="btn btn-secundario btn-block" data-goto="desafios" style="margin-top: 10px;">
+            ← Voltar
+          </button>
+        </div>
+      </section>
+
+      <!-- TELA RANKING -->
+      <section id="screen-ranking" class="screen">
+        <div class="titulo-section">
+          <span>Ranking dos times</span>
+          <small>Exemplo visual</small>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title-row">
+              <span>🏆</span>
+              <div class="card-title">Top 4 (Simulado)</div>
+            </div>
+          </div>
+
+          <div class="ranking-lista">
+            <div class="item-ranking">
+              <span class="posicao">🥇</span>
+              <div class="item-ranking-avatar">🐾</div>
+              <div class="item-ranking-nome">Família dos Pets</div>
+              <div class="item-ranking-pontos">1.120 pts</div>
+            </div>
+
+            <div class="item-ranking voce">
+              <span class="posicao">🥈</span>
+              <div class="item-ranking-avatar">👨‍👩‍👧</div>
+              <div class="item-ranking-nome">
+                Família Barbosa
+                <span class="pill-voce">Você</span>
+              </div>
+              <div class="item-ranking-pontos">980 pts</div>
+            </div>
+
+            <div class="item-ranking">
+              <span class="posicao">3</span>
+              <div class="item-ranking-avatar">🎮</div>
+              <div class="item-ranking-nome">Time dos Gamers</div>
+              <div class="item-ranking-pontos">840 pts</div>
+            </div>
+
+            <div class="item-ranking">
+              <span class="posicao">4</span>
+              <div class="item-ranking-avatar">🌈</div>
+              <div class="item-ranking-nome">Galera do Bairro</div>
+              <div class="item-ranking-pontos">730 pts</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TELA PERFIL -->
+      <section id="screen-perfil" class="screen">
+        <div class="titulo-section">
+          <span>Seu perfil</span>
+          <small>Exemplo visual</small>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title-row">
+              <span>👤</span>
+              <div>
+                <div class="card-title" id="perfilNome">Jogador da Liga</div>
+                <div class="card-subtitle">Participante da temporada</div>
+              </div>
+            </div>
+          </div>
+
+          <p class="texto-suave">
+            Aqui podem aparecer histórico, conquistas, medalhas e temporadas jogadas.
+          </p>
+
+          <div class="chips-linha">
+            <span class="chip">🏅 12 desafios concluídos</span>
+            <span class="chip">🔥 1 desafio épico</span>
+            <span class="chip">🎥 8 vídeos enviados</span>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- NAVEGAÇÃO INFERIOR -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-target="dashboard">
+        <span>📊</span>
+        Painel
+      </button>
+
+      <button class="nav-btn" data-target="desafios">
+        <span>🎯</span>
+        Desafios
+      </button>
+
+      <button class="nav-btn" data-target="ranking">
+        <span>🏆</span>
+        Ranking
+      </button>
+
+      <button class="nav-btn" data-target="perfil">
+        <span>👤</span>
+        Perfil
+      </button>
+    </nav>
+
+  </div>
+
+  <link rel="stylesheet" href="styles.css" />
+</body>
+
+</html>
